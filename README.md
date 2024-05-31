@@ -7,8 +7,6 @@ This is a project exercise as part of the hiring process at AgileEngine. I crate
 
 YOu need to first fun migrations with `mix ecto.create` and then `mix ecto.migrate`
 
-In order to load csv data to db  you can  run: `mix run priv/repo/seeds.exs` too
-
 To start your Phoenix server:
 
   * Run `mix setup` to install and setup dependencies
