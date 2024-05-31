@@ -1,0 +1,95 @@
+<.flash_group flash={@flash} />
+<div class="px-4 py-10 sm:px-6 sm:py-28 lg:px-8 xl:px-28 xl:py-32">
+  <div class="mx-auto lg:mx-0">
+    <p class="text-[2rem] mt-4 font-semibold leading-10 tracking-tighter text-zinc-900 text-balance">
+      Food Truck Search
+    </p>
+    <p class="mt-4 text-base leading-7 text-zinc-600">
+      You can search the food trucks according Name, Location or Address
+    </p>
+    <div class="auto mt-10">
+      <form action="" novalidate="" role="search" phx-change="search">
+        <div class="group relative flex h-12">
+          <svg
+            viewBox="0 0 20 20"
+            fill="none"
+            aria-hidden="true"
+            class="pointer-events-none absolute left-3 top-0 h-full w-5 stroke-zinc-500"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M12.01 12a4.25 4.25 0 1 0-6.02-6 4.25 4.25 0 0 0 6.02 6Zm0 0 3.24 3.25"
+            >
+            </path>
+          </svg>
+
+          <input
+            id="search-input"
+            name="search[query]"
+            class="flex-auto rounded-lg appearance-none bg-transparent pl-10 text-zinc-900 outline-none focus:outline-none border-slate-200 focus:border-slate-200 focus:ring-0 focus:shadow-none placeholder:text-zinc-500 focus:w-full focus:flex-none sm:text-sm [&::-webkit-search-cancel-button]:hidden [&::-webkit-search-decoration]:hidden [&::-webkit-search-results-button]:hidden [&::-webkit-search-results-decoration]:hidden pr-4"
+            aria-autocomplete="both"
+            aria-controls="searchbox__results_list"
+            autocomplete="off"
+            autocorrect="off"
+            autocapitalize="off"
+            enterkeyhint="search"
+            spellcheck="false"
+            placeholder="Find by APPLICANT, LOCATION or ADDRESS"
+            type="search"
+            value=""
+            tabindex="0"
+          />
+        </div>
+      </form>
+      <div class="relative overflow-x-auto">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"  :if={@food_trucks != []}>
+          <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+              <th scope="col" class="px-6 py-3">
+                Applicant
+              </th>
+              <th scope="col" class="px-6 py-3">
+                Location Description
+              </th>
+              <th scope="col" class="px-6 py-3">
+                Address
+              </th>
+              <th scope="col" class="px-6 py-3">
+                Food Items
+              </th>
+              <th scope="col" class="px-6 py-3">
+                Schedule
+              </th>
+            </tr>
+          </thead>
+
+          <%= for food_truck <- @food_trucks do %>
+            <tbody>
+              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <th
+                  scope="row"
+                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                >
+                  <%= food_truck.applicant %>
+                </th>
+                <td class="px-6 py-4">
+                  <%= food_truck.location_description %>
+                </td>
+                <td class="px-6 py-4">
+                  <%= food_truck.address %>
+                </td>
+                <td class="px-6 py-4">
+                  <%= food_truck.food_items %>
+                </td>
+                <td class="px-6 py-4">
+                  <%= food_truck.days_hours %>
+                </td>
+              </tr>
+            </tbody>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
